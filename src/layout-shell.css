@@ -1,0 +1,211 @@
+/* App shell styles: app-shell, skip-link, app-header, app-header__inner,
+   brand, brand__mark, brand__name, app-header__actions, app-nav, nav-link,
+   app-main, app-footer. Defines every class name used by Layout.tsx. */
+
+.app-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #f6f7f9;
+  color: #0f172a;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.65rem 1rem;
+  border-radius: 0 0 0.6rem 0;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  left: 0;
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid #e5e7eb;
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+}
+
+.app-header__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Brand ---------- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border-radius: 0.6rem;
+}
+
+.brand:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 3px;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+  color: #ffffff;
+  font-size: 1.05rem;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.35);
+}
+
+.brand__name {
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+/* ---------- Header actions / nav ---------- */
+.app-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.nav-link:hover {
+  background: #eef2f7;
+  color: #0f172a;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+.nav-link--active {
+  background: #e7f7f0;
+  color: #047857;
+}
+
+.nav-link--plan {
+  border: 1px solid #d7dde5;
+  background: #ffffff;
+  color: #334155;
+}
+
+.nav-link--plan:hover {
+  border-color: #10b981;
+  background: #f0fdf9;
+  color: #047857;
+}
+
+.nav-link--plan-active {
+  border-color: #10b981;
+  background: #e7f7f0;
+  color: #047857;
+}
+
+/* ---------- Main ---------- */
+.app-main {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  box-sizing: border-box;
+}
+
+.app-main:focus {
+  outline: none;
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.app-footer__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.app-footer__brand {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+@media (max-width: 560px) {
+  .app-header__inner {
+    padding: 0.65rem 1rem;
+  }
+
+  .app-main {
+    padding: 1.5rem 1rem 2.5rem;
+  }
+
+  .brand__name {
+    font-size: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.86rem;
+  }
+}
