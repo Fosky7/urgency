@@ -1,0 +1,341 @@
+/* src/styles.css
+ * Global stylesheet for Swipe to Fund.
+ *
+ * Colors resolve exclusively from the design tokens declared by the shadcn/ui
+ * theme (--background, --foreground, --primary, ...). Nothing in this file
+ * hardcodes a color value, so light, dark and high-contrast themes stay in sync
+ * with the rest of the app.
+ */
+
+:root {
+  color-scheme: light dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: hsl(var(--primary));
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Keyboard users can jump straight past the persistent header. */
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.5rem 0.9rem;
+  border-radius: max(0.25rem, calc(var(--radius, 0.5rem) - 2px));
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 150ms ease;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Persistent header                                                          */
+/* -------------------------------------------------------------------------- */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background) / 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.app-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  width: min(1120px, 100% - 2rem);
+  margin-inline: auto;
+  padding-block: 0.8rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: hsl(var(--foreground));
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand:hover {
+  color: hsl(var(--primary));
+}
+
+.brand__mark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 999px;
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.app-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: calc(var(--radius, 0.5rem) - 2px);
+  color: hsl(var(--muted-foreground));
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.nav-link:hover {
+  background-color: hsl(var(--accent, var(--muted)));
+  color: hsl(var(--accent-foreground, var(--foreground)));
+}
+
+.nav-link[aria-current='page'],
+.nav-link[data-status='active'] {
+  background-color: hsl(var(--primary) / 0.12);
+  color: hsl(var(--primary));
+}
+
+.nav-link--plan {
+  border: 1px solid hsl(var(--border));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Page primitives                                                            */
+/* -------------------------------------------------------------------------- */
+
+.app-main {
+  flex: 1;
+  width: min(1120px, 100% - 2rem);
+  margin-inline: auto;
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+}
+
+.page-title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.page-lede {
+  max-width: 62ch;
+  margin: 0 0 1.5rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 1.05rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  color: hsl(var(--primary));
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Buttons (shared with shadcn/ui primitives)                                 */
+/* -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: calc(var(--radius, 0.5rem) + 2px);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.btn--primary:hover:not(:disabled) {
+  background-color: hsl(var(--primary) / 0.9);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background-color: hsl(var(--accent, var(--muted)));
+  color: hsl(var(--accent-foreground, var(--foreground)));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Build plan page                                                            */
+/* -------------------------------------------------------------------------- */
+
+.plan {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 72ch;
+}
+
+.plan__section {
+  padding: 1.15rem 1.35rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: calc(var(--radius, 0.5rem) + 6px);
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+.plan__section h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+.plan__section p {
+  margin: 0 0 0.75rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.plan__section p:last-child {
+  margin-bottom: 0;
+}
+
+.plan__list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.plan__list li::marker {
+  color: hsl(var(--primary));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Empty / 404 / error states                                                 */
+/* -------------------------------------------------------------------------- */
+
+.status-page {
+  max-width: 64ch;
+  padding-block: clamp(1rem, 6vw, 4rem);
+}
+
+.status-page[role='alert'] {
+  border-left: 3px solid hsl(var(--destructive, var(--primary)));
+  padding-left: 1.1rem;
+}
+
+@media (max-width: 560px) {
+  .app-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-nav {
+    width: 100%;
+  }
+
+  .nav-link {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
