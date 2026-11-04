@@ -1,0 +1,156 @@
+/* Application shell styles for <Layout />.
+   These class names (app-shell, skip-link, app-header, app-header__inner,
+   brand, brand__mark, brand__name, app-header__actions, app-nav, nav-link,
+   app-main, app-footer) are used by src/components/Layout.tsx and are defined
+   here so the shell always renders styled on every route. */
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f7f7fb;
+  color: #16161d;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: #16161d;
+  color: #ffffff;
+  border-radius: 0 0 0.5rem 0;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 0;
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e6e6ef;
+}
+
+.app-header__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.brand:hover .brand__name {
+  color: #6d28d9;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.brand__name {
+  font-size: 1.05rem;
+  transition: color 120ms ease;
+}
+
+.app-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4b4b5a;
+  text-decoration: none;
+  transition: background 120ms ease, color 120ms ease;
+}
+.nav-link:hover {
+  background: #efeefb;
+  color: #16161d;
+}
+.nav-link--active,
+.nav-link--plan-active {
+  background: #16161d;
+  color: #ffffff;
+}
+.nav-link--plan {
+  border: 1px solid #d8d7ea;
+}
+
+.app-main {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.app-footer {
+  border-top: 1px solid #e6e6ef;
+  background: #ffffff;
+}
+.app-footer__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #6b6b7b;
+}
+.app-footer__brand {
+  font-weight: 700;
+  color: #16161d;
+}
+
+@media (max-width: 640px) {
+  .app-header__inner {
+    padding: 0.7rem 1rem;
+  }
+  .app-main {
+    padding: 1.5rem 1rem 2.5rem;
+  }
+}

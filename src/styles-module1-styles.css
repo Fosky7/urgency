@@ -1,0 +1,370 @@
+/* Module 1 — page styles for the landing page (/) and the build plan (/plan).
+   Defined here so every class name used by src/routes/index.tsx and
+   src/routes/plan.tsx resolves to real CSS. */
+
+:root {
+  --m1-bg: #0b1020;
+  --m1-surface: #141a2f;
+  --m1-surface-2: #1b2340;
+  --m1-border: rgba(255, 255, 255, 0.1);
+  --m1-text: #f4f6fb;
+  --m1-muted: #a9b2c9;
+  --m1-accent: #4ade80;
+  --m1-accent-2: #38bdf8;
+  --m1-radius: 18px;
+  --m1-shadow: 0 18px 44px rgba(3, 7, 18, 0.45);
+}
+
+/* ---------- shared bits ---------- */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--m1-accent);
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  font-weight: 650;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--m1-accent), var(--m1-accent-2));
+  color: #06121f;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--m1-text);
+  border-color: var(--m1-border);
+}
+
+.btn--ghost:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ---------- hero ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 3rem;
+  align-items: center;
+  padding: 3.5rem 0 4rem;
+}
+
+.hero__title {
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  color: var(--m1-text);
+}
+
+.hero__lede {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--m1-muted);
+  max-width: 46ch;
+  margin: 0 0 1.75rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ---------- deck preview ---------- */
+.deck-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deck-stack {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  padding: 1.25rem 0;
+}
+
+.deck-stack::before,
+.deck-stack::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 100%;
+  border-radius: calc(var(--m1-radius) + 4px);
+  background: var(--m1-surface);
+  border: 1px solid var(--m1-border);
+  z-index: 0;
+}
+
+.deck-stack::before {
+  transform: translateY(14px) scale(0.965);
+  opacity: 0.55;
+}
+
+.deck-stack::after {
+  transform: translateY(7px) scale(0.982);
+  opacity: 0.8;
+}
+
+.deck-card {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(170deg, var(--m1-surface-2), var(--m1-surface));
+  border: 1px solid var(--m1-border);
+  border-radius: var(--m1-radius);
+  box-shadow: var(--m1-shadow);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.deck-card__meta {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--m1-accent);
+  font-weight: 700;
+}
+
+.deck-card__title {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--m1-text);
+}
+
+.deck-card__amount {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--m1-text);
+}
+
+.deck-card__recipient {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--m1-accent-2);
+  font-weight: 600;
+}
+
+.deck-card__note {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--m1-muted);
+}
+
+.deck-card__hint {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.6rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--m1-border);
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--m1-muted);
+}
+
+/* ---------- content sections ---------- */
+.section {
+  padding: 2.75rem 0;
+  border-top: 1px solid var(--m1-border);
+}
+
+.section__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  letter-spacing: -0.015em;
+  color: var(--m1-text);
+}
+
+.section__lede {
+  margin: 0 0 1.75rem;
+  color: var(--m1-muted);
+  max-width: 60ch;
+  line-height: 1.6;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--m1-surface);
+  border: 1px solid var(--m1-border);
+  border-radius: var(--m1-radius);
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.card__step {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--m1-accent-2);
+}
+
+.card__title {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--m1-text);
+}
+
+.card__body {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--m1-muted);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.stat {
+  background: var(--m1-surface);
+  border: 1px solid var(--m1-border);
+  border-radius: var(--m1-radius);
+  padding: 1.25rem;
+}
+
+.stat__value {
+  margin: 0 0 0.3rem;
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--m1-text);
+}
+
+.stat__label {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--m1-muted);
+}
+
+/* ---------- build plan page (/plan) ---------- */
+.plan-section {
+  padding: 2rem 0;
+  border-top: 1px solid var(--m1-border);
+}
+
+.plan-section:first-of-type {
+  border-top: none;
+}
+
+.plan-section__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  letter-spacing: -0.015em;
+  color: var(--m1-text);
+}
+
+.plan-section__lede {
+  margin: 0 0 1.5rem;
+  color: var(--m1-muted);
+  line-height: 1.6;
+  max-width: 68ch;
+}
+
+.plan-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  color: var(--m1-muted);
+  line-height: 1.6;
+}
+
+.plan-list li::marker {
+  color: var(--m1-accent);
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.spec {
+  background: var(--m1-surface);
+  border: 1px solid var(--m1-border);
+  border-radius: var(--m1-radius);
+  padding: 1.25rem;
+}
+
+.spec__name {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--m1-text);
+}
+
+.spec__fields {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: var(--m1-muted);
+}
+
+.spec__fields li {
+  display: flex;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+
+.spec__fields li::before {
+  content: '—';
+  color: var(--m1-accent-2);
+  flex: none;
+}
+
+@media (max-width: 820px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    padding: 2.25rem 0 2.75rem;
+  }
+
+  .deck-stack {
+    max-width: 420px;
+  }
+}
